@@ -3,7 +3,6 @@ package models
 import (
 	"bytes"
 	"encoding/json"
-	"time"
 )
 
 /*
@@ -94,8 +93,8 @@ func (a *AnnenID) String() string {
 // Tilleggsstilling is an extra employment in addition the main employment.
 type Tilleggsstilling struct {
 	StillingID      int64     `json:"stillingId,omitempty"`
-	Startdato       time.Time `json:"startdato,omitempty"`
-	Sluttdato       time.Time `json:"sluttdato,omitempty"`
+	Startdato       string `json:"startdato,omitempty"`
+	Sluttdato       string `json:"sluttdato,omitempty"`
 	Dellonnsprosent float64   `json:"dellonnsprosent,omitempty"`
 	EkstraStilling  string    `json:"ekstraStilling,omitempty"`
 }
