@@ -92,11 +92,11 @@ func (a *AnnenID) String() string {
 
 // Tilleggsstilling is an extra employment in addition the main employment.
 type Tilleggsstilling struct {
-	StillingID      int64   `json:"stillingId,omitempty"`
-	Startdato       string  `json:"startdato,omitempty"`
-	Sluttdato       string  `json:"sluttdato,omitempty"`
-	Dellonnsprosent float64 `json:"dellonnsprosent,omitempty"`
-	EkstraStilling  string  `json:"ekstraStilling,omitempty"`
+	StillingID      int64  `json:"stillingId,omitempty"`
+	Startdato       string `json:"startdato,omitempty"`
+	Sluttdato       string `json:"sluttdato,omitempty"`
+	Dellonnsprosent string `json:"dellonnsprosent,omitempty"`
+	EkstraStilling  string `json:"ekstraStilling,omitempty"`
 }
 
 func (t *Tilleggsstilling) String() string {
