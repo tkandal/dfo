@@ -1,7 +1,7 @@
 package models
 
 /*
- * Copyright (c) 2023-2024 Norwegian University of Science and Technology
+ * Copyright (c) 2023-2025 Norwegian University of Science and Technology
  */
 
 // Stilling is a position from DFØ/SAP API.
@@ -23,7 +23,7 @@ func (s *Stilling) String() string {
 
 // Innehaver is a person that has a given position.
 type Innehaver struct {
-	InnehaverAnsattnr  string    `json:"innehaverAnsattnr,omitempty"`
+	InnehaverAnsattnr  string `json:"innehaverAnsattnr,omitempty"`
 	InnehaverStartdato string `json:"innehaverStartdato,omitempty"`
 	InnehaverSluttdato string `json:"innehaverSluttdato,omitempty"`
 }
@@ -34,10 +34,10 @@ func (i *Innehaver) String() string {
 
 // StillingsKategori is a position category from DFØ/SAP API.
 type StillingsKategori struct {
-	StillingskatID        int64     `json:"stillingskatId,omitempty"`
+	StillingskatID        int64  `json:"stillingskatId,omitempty"`
 	StillingskatStartdato string `json:"stillingskatStartdato,omitempty"`
 	StillingskatSluttdato string `json:"stillingskatSluttdato,omitempty"`
-	StillingskatBetegn    string    `json:"stillingskatBetegn,omitempty"`
+	StillingskatBetegn    string `json:"stillingskatBetegn,omitempty"`
 }
 
 func (s *StillingsKategori) String() string {

@@ -1,7 +1,7 @@
 package models
 
 /*
- * Copyright (c) 2023-2024 Norwegian University of Science and Technology
+ * Copyright (c) 2023-2025 Norwegian University of Science and Technology
  */
 
 // Orgenhet is an organizational unit from DFØ/SAP API.

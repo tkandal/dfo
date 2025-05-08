@@ -6,7 +6,7 @@ import (
 )
 
 /*
- * Copyright (c) 2023-2024 Norwegian University of Science and Technology
+ * Copyright (c) 2023-2025 Norwegian University of Science and Technology
  */
 
 // AnsattResponse is the struct that returned when fetching persons from DFO/SAP API.
@@ -92,11 +92,11 @@ func (a *AnnenID) String() string {
 
 // Tilleggsstilling is an extra employment in addition the main employment.
 type Tilleggsstilling struct {
-	StillingID      int64     `json:"stillingId,omitempty"`
-	Startdato       string `json:"startdato,omitempty"`
-	Sluttdato       string `json:"sluttdato,omitempty"`
-	Dellonnsprosent float64   `json:"dellonnsprosent,omitempty"`
-	EkstraStilling  string    `json:"ekstraStilling,omitempty"`
+	StillingID      int64   `json:"stillingId,omitempty"`
+	Startdato       string  `json:"startdato,omitempty"`
+	Sluttdato       string  `json:"sluttdato,omitempty"`
+	Dellonnsprosent float64 `json:"dellonnsprosent,omitempty"`
+	EkstraStilling  string  `json:"ekstraStilling,omitempty"`
 }
 
 func (t *Tilleggsstilling) String() string {
