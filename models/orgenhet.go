@@ -12,9 +12,11 @@ type Orgenhet struct {
 	Leder              []*Leder  `json:"leder,omitempty"`
 	PDO                string    `json:"pdo,omitempty"`
 	Type               string    `json:"type,omitempty"`
-	LokasjonID         string    `json:"lokasjonId,omitempty"`
 	OrgKostnadssted    string    `json:"orgKostnadssted,omitempty"`
 	AuthWF             []*AuthWF `json:"authWf,omitempty"`
+	LokasjonID         string    `json:"lokasjonId,omitempty"`
+	DBHKode            string    `json:"dbhKode,omitempty"`
+	DBHBetegnelse      string    `json:"dbhBetegnelse,omitempty"`
 	OverordnOrgenhetID string    `json:"overordnOrgenhetId,omitempty"`
 }
 
