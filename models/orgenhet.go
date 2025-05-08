@@ -4,7 +4,7 @@ package models
  * Copyright (c) 2023-2025 Norwegian University of Science and Technology
  */
 
-// Orgenhet is an organizational unit from DFØ/SAP API.
+// Orgenhet is an organizational unit from DFØ/SAP REST-API.
 type Orgenhet struct {
 	ID                 int64     `json:"id,omitempty"`
 	OrgKortnavn        string    `json:"orgKortnavn,omitempty"`

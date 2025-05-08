@@ -9,7 +9,7 @@ import (
  * Copyright (c) 2023-2025 Norwegian University of Science and Technology
  */
 
-// AnsattResponse is the struct that returned when fetching persons from DFO/SAP API.
+// AnsattResponse is returned when fetching persons from DFO/SAP REST-API.
 type AnsattResponse struct {
 	Ansatt []*Ansatt `json:"ansatt"`
 }
@@ -18,7 +18,7 @@ func (ar *AnsattResponse) String() string {
 	return toString(ar)
 }
 
-// Ansatt is an employee from DFØ/SAP API.
+// Ansatt is an employee from DFØ/SAP REST-API.
 type Ansatt struct {
 	ID                     string              `json:"id,omitempty"`
 	BrukerIdent            string              `json:"brukerident,omitempty"`
@@ -75,7 +75,7 @@ func (a *Ansatt) String() string {
 	return toString(a)
 }
 
-// AnnenID is an alternative identity to FNR, f.ex. passport number.
+// AnnenID is an alternative identity to FNR, f.ex. passport number, national ID, etc.
 type AnnenID struct {
 	IDType        string `json:"idType,omitempty"`
 	IDBeskrivelse string `json:"idBeskrivelse,omitempty"`
@@ -89,7 +89,7 @@ func (a *AnnenID) String() string {
 	return toString(a)
 }
 
-// Tilleggsstilling is an extra employment in addition the main employment.
+// Tilleggsstilling is extra employment in addition the main employment.
 type Tilleggsstilling struct {
 	StillingID      int64  `json:"stillingId,omitempty"`
 	Startdato       string `json:"startdato,omitempty"`

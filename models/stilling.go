@@ -4,7 +4,16 @@ package models
  * Copyright (c) 2023-2025 Norwegian University of Science and Technology
  */
 
-// Stilling is a position from DFØ/SAP API.
+// StillingResponse is returned when fetching positions from DFO/SAP REST-API.
+type StillingResponse struct {
+	Stilling []*Stilling `json:"stilling,omitempty"`
+}
+
+func (sr *StillingResponse) String() string {
+	return toString(sr)
+}
+
+// Stilling is a position from DFØ/SAP REST-API.
 type Stilling struct {
 	ID                int64                `json:"id,omitempty"`
 	Stillingsnavn     string               `json:"stillingsnavn,omitempty"`
@@ -38,7 +47,7 @@ func (i *Innehaver) String() string {
 	return toString(i)
 }
 
-// StillingsKategori is a position category from DFØ/SAP API.
+// StillingsKategori is a position category from DFØ/SAP REST-API.
 type StillingsKategori struct {
 	StillingskatID        int64  `json:"stillingskatId,omitempty"`
 	StillingskatStartdato string `json:"stillingskatStartdato,omitempty"`
@@ -50,6 +59,7 @@ func (s *StillingsKategori) String() string {
 	return toString(s)
 }
 
+// Finansiering contains information about the funding of a position.
 type Finansiering struct {
 	FinansieringstypeID     int64  `json:"finansieringstypeId,omitempty"`
 	Finansieringskode       string `json:"finansieringskode,omitempty"`
@@ -57,4 +67,8 @@ type Finansiering struct {
 	FinansieringSluttdato   string `json:"finansieringSluttdato,omitempty"`
 	Finansieringsbetegnelse string `json:"finansieringsbetegnelse,omitempty"`
 	Finansieringsprosent    string `json:"finansieringsprosent,omitempty"`
+}
+
+func (f *Finansiering) String() string {
+	return toString(f)
 }
