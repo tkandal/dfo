@@ -24,9 +24,9 @@ type Ansatt struct {
 	BrukerIdent            string              `json:"brukerident,omitempty"`
 	DFOBrukerIdent         string              `json:"dfoBrukerident,omitempty"`
 	EksternIdent           string              `json:"eksternIdent,omitempty"`
+	Tittel                 string              `json:"tittel,omitempty"`
 	Fornavn                string              `json:"fornavn,omitempty"`
 	Etternavn              string              `json:"etternavn,omitempty"`
-	Tittel                 string              `json:"tittel,omitempty"`
 	FNR                    string              `json:"fnr,omitempty"`
 	AnnenID                []*AnnenID          `json:"annen_id,omitempty"`
 	FDato                  string              `json:"fdato,omitempty"`
@@ -39,8 +39,9 @@ type Ansatt struct {
 	Sluttdato              string              `json:"sluttdato,omitempty"`
 	Sluttarsak             string              `json:"sluttarsak,omitempty"`
 	StillingID             int64               `json:"stillingId,omitempty"`
+	Hjemmelkode            string              `json:"hjemmelKode,omitempty"`
+	HjemmelTekst           string              `json:"hjemmelTekst,omitempty"`
 	Dellonnsprosent        string              `json:"dellonnsprosent,omitempty"`
-	Bevilgning             string              `json:"bevilgning,omitempty"`
 	Kostnadssted           string              `json:"kostnadssted,omitempty"`
 	OrganisasjonID         int64               `json:"organisasjonId,omitempty"`
 	JurBedriftsnummer      int64               `json:"jurBedriftsnummer,omitempty"`
@@ -48,8 +49,9 @@ type Ansatt struct {
 	Tilleggsstilling       []*Tilleggsstilling `json:"tilleggsstilling,omitempty"`
 	Lederflagg             bool                `json:"lederflagg"`
 	Portaltilgang          bool                `json:"portaltilgang"`
-	Turnustilgang          bool                `json:"turnustilgang,omitempty"`
+	Turnustilgang          bool                `json:"turnustilgang"`
 	Eksternbruker          bool                `json:"eksternbruker"`
+	ReservasjonPublisering bool                `json:"reservasjonPublisering"`
 	Epost                  string              `json:"epost,omitempty"`
 	Tjenestetelefon        string              `json:"tjenestetelefon,omitempty"`
 	PrivatTelefonnummer    string              `json:"privatTelefonnummer,omitempty"`
@@ -59,17 +61,14 @@ type Ansatt struct {
 	PrivatTlfUtland        string              `json:"privatTlfUtland,omitempty"`
 	TelefonJobb            string              `json:"telefonJobb,omitempty"`
 	TelefonPrivat          string              `json:"telefonPrivat,omitempty"`
+	PrivatEpost            string              `json:"privatEpost,omitempty"`
 	PrivatPostadresse      string              `json:"privatPostadresse,omitempty"`
 	PrivatPostnr           string              `json:"privatPostnr,omitempty"`
 	PrivatPoststed         string              `json:"privatPoststed,omitempty"`
 	EndretDato             string              `json:"endretDato,omitempty"`
-	EndretAv               string              `json:"endretAv,omitempty"`
-	ReservasjonPublisering bool                `json:"reservasjonPublisering"`
-	Hjemmelkode            string              `json:"hjemmelKode,omitempty"`
-	HjemmelTekst           string              `json:"hjemmelTekst,omitempty"`
-	EndretInfotype         string              `json:"endretInfotype,omitempty"`
 	EndretKlokkeslett      string              `json:"endretKlokkeslett,omitempty"`
-	PrivatEpost            string              `json:"privatEpost,omitempty"`
+	EndretInfotype         string              `json:"endretInfotype,omitempty"`
+	EndretAv               string              `json:"endretAv,omitempty"`
 }
 
 func (a *Ansatt) String() string {
