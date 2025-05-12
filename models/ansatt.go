@@ -28,7 +28,7 @@ type Ansatt struct {
 	Fornavn                string              `json:"fornavn,omitempty"`
 	Etternavn              string              `json:"etternavn,omitempty"`
 	FNR                    string              `json:"fnr,omitempty"`
-	AnnenID                []*AnnenID          `json:"annen_id,omitempty"`
+	AnnenID                []*AnnenID          `json:"annenId,omitempty"`
 	FDato                  string              `json:"fdato,omitempty"`
 	Kjonn                  string              `json:"kjonn,omitempty"`
 	SakArkivNr             string              `json:"sakarkivnr,omitempty"`
