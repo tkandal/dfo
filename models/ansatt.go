@@ -3,11 +3,18 @@ package models
 import (
 	"bytes"
 	"encoding/json"
+	"regexp"
 )
 
 /*
- * Copyright (c) 2023-2025 Norwegian University of Science and Technology
+ * Copyright (c) 2023-2026 Norwegian University of Science and Technology
  */
+
+var nin *regexp.Regexp
+
+func init() {
+	nin = regexp.MustCompile(`^\d{10,11}$`)
+}
 
 // AnsattResponse is returned when fetching persons from DFO/SAP REST-API.
 type AnsattResponse struct {
@@ -20,55 +27,60 @@ func (ar *AnsattResponse) String() string {
 
 // Ansatt is an employee from DFØ/SAP REST-API.
 type Ansatt struct {
-	ID                     string              `json:"id,omitempty"`
-	BrukerIdent            string              `json:"brukerident,omitempty"`
-	DFOBrukerIdent         string              `json:"dfoBrukerident,omitempty"`
-	EksternIdent           string              `json:"eksternIdent,omitempty"`
-	Tittel                 string              `json:"tittel,omitempty"`
-	Fornavn                string              `json:"fornavn,omitempty"`
-	Etternavn              string              `json:"etternavn,omitempty"`
-	FNR                    string              `json:"fnr,omitempty"`
-	AnnenID                []*AnnenID          `json:"annenId,omitempty"`
-	FDato                  string              `json:"fdato,omitempty"`
-	Kjonn                  string              `json:"kjonn,omitempty"`
-	SakArkivNr             string              `json:"sakarkivnr,omitempty"`
-	Landkode               string              `json:"landkode,omitempty"`
-	MedarbeiderGruppe      string              `json:"medarbeidergruppe,omitempty"`
-	MedarbeideUndergruppe  string              `json:"medarbeiderundergruppe,omitempty"`
-	Startdato              string              `json:"startdato,omitempty"`
-	Sluttdato              string              `json:"sluttdato,omitempty"`
-	Sluttarsak             string              `json:"sluttarsak,omitempty"`
-	StillingID             int64               `json:"stillingId,omitempty"`
-	Hjemmelkode            string              `json:"hjemmelKode,omitempty"`
-	HjemmelTekst           string              `json:"hjemmelTekst,omitempty"`
-	Dellonnsprosent        string              `json:"dellonnsprosent,omitempty"`
-	Kostnadssted           string              `json:"kostnadssted,omitempty"`
-	OrganisasjonID         interface{}         `json:"organisasjonId,omitempty"`
-	JurBedriftsnummer      int64               `json:"jurBedriftsnummer,omitempty"`
-	PDO                    string              `json:"pdo,omitempty"`
-	Tilleggsstilling       []*Tilleggsstilling `json:"tilleggsstilling,omitempty"`
+	ID                     string              `json:"id"`
+	BrukerIdent            string              `json:"brukerident"`
+	DFOBrukerIdent         string              `json:"dfoBrukerident"`
+	EksternIdent           string              `json:"eksternIdent"`
+	Tittel                 string              `json:"tittel"`
+	Fornavn                string              `json:"fornavn"`
+	Etternavn              string              `json:"etternavn"`
+	FNR                    string              `json:"fnr"`
+	AnnenID                []*AnnenID          `json:"annenId"`
+	FDato                  string              `json:"fdato"`
+	Kjonn                  string              `json:"kjonn"`
+	SakArkivNr             string              `json:"sakarkivnr"`
+	Landkode               string              `json:"landkode"`
+	MedarbeiderGruppe      string              `json:"medarbeidergruppe"`
+	MedarbeideUndergruppe  string              `json:"medarbeiderundergruppe"`
+	Startdato              string              `json:"startdato"`
+	Sluttdato              string              `json:"sluttdato"`
+	Sluttarsak             string              `json:"sluttarsak"`
+	StillingID             int64               `json:"stillingId"`
+	Hjemmelkode            string              `json:"hjemmelKode"`
+	HjemmelTekst           string              `json:"hjemmelTekst"`
+	Dellonnsprosent        string              `json:"dellonnsprosent"`
+	Kostnadssted           string              `json:"kostnadssted"`
+	OrganisasjonID         int64               `json:"organisasjonId"`
+	JurBedriftsnummer      int64               `json:"jurBedriftsnummer"`
+	PDO                    string              `json:"pdo"`
+	Tilleggsstilling       []*Tilleggsstilling `json:"tilleggsstilling"`
 	Lederflagg             bool                `json:"lederflagg"`
 	Portaltilgang          bool                `json:"portaltilgang"`
 	Turnustilgang          bool                `json:"turnustilgang"`
 	Eksternbruker          bool                `json:"eksternbruker"`
 	ReservasjonPublisering bool                `json:"reservasjonPublisering"`
-	Epost                  string              `json:"epost,omitempty"`
-	Tjenestetelefon        string              `json:"tjenestetelefon,omitempty"`
-	PrivatTelefonnummer    string              `json:"privatTelefonnummer,omitempty"`
-	Telefonnummer          string              `json:"telefonnummer,omitempty"`
-	Mobilnummer            string              `json:"mobilnummer,omitempty"`
-	MobilPrivat            string              `json:"mobilPrivat,omitempty"`
-	PrivatTlfUtland        string              `json:"privatTlfUtland,omitempty"`
-	TelefonJobb            string              `json:"telefonJobb,omitempty"`
-	TelefonPrivat          string              `json:"telefonPrivat,omitempty"`
-	PrivatEpost            string              `json:"privatEpost,omitempty"`
-	PrivatPostadresse      string              `json:"privatPostadresse,omitempty"`
-	PrivatPostnr           string              `json:"privatPostnr,omitempty"`
-	PrivatPoststed         string              `json:"privatPoststed,omitempty"`
-	EndretDato             string              `json:"endretDato,omitempty"`
-	EndretKlokkeslett      string              `json:"endretKlokkeslett,omitempty"`
-	EndretInfotype         string              `json:"endretInfotype,omitempty"`
-	EndretAv               string              `json:"endretAv,omitempty"`
+	Epost                  string              `json:"epost"`
+	Tjenestetelefon        string              `json:"tjenestetelefon"`
+	PrivatTelefonnummer    string              `json:"privatTelefonnummer"`
+	Telefonnummer          string              `json:"telefonnummer"`
+	Mobilnummer            string              `json:"mobilnummer"`
+	MobilPrivat            string              `json:"mobilPrivat"`
+	PrivatTlfUtland        string              `json:"privatTlfUtland"`
+	TelefonJobb            string              `json:"telefonJobb"`
+	TelefonPrivat          string              `json:"telefonPrivat"`
+	PrivatEpost            string              `json:"privatEpost"`
+	PrivatPostadresse      string              `json:"privatPostadresse"`
+	PrivatPostnr           string              `json:"privatPostnr"`
+	PrivatPoststed         string              `json:"privatPoststed"`
+	EndretDato             string              `json:"endretDato"`
+	EndretKlokkeslett      string              `json:"endretKlokkeslett"`
+	EndretInfotype         string              `json:"endretInfotype"`
+	EndretAv               string              `json:"endretAv"`
+}
+
+// HasNIN checks of this emplyee has NIN (National Identity Number).
+func (a *Ansatt) HasNIN() bool {
+	return nin.Match([]byte(a.FNR))
 }
 
 func (a *Ansatt) String() string {
@@ -77,12 +89,12 @@ func (a *Ansatt) String() string {
 
 // AnnenID is an alternative identity to FNR, f.ex. passport number, national ID, etc.
 type AnnenID struct {
-	IDType        string `json:"idType,omitempty"`
-	IDBeskrivelse string `json:"idBeskrivelse,omitempty"`
-	IDNr          string `json:"idNr,omitempty"`
-	IDStartdato   string `json:"idStartdato,omitempty"`
-	IDSluttdato   string `json:"idSluttdato,omitempty"`
-	IDLand        string `json:"idLand,omitempty"`
+	IDType        string `json:"idType"`
+	IDBeskrivelse string `json:"idBeskrivelse"`
+	IDNr          string `json:"idNr"`
+	IDStartdato   string `json:"idStartdato"`
+	IDSluttdato   string `json:"idSluttdato"`
+	IDLand        string `json:"idLand"`
 }
 
 func (a *AnnenID) String() string {
@@ -91,18 +103,18 @@ func (a *AnnenID) String() string {
 
 // Tilleggsstilling is extra employment in addition the main employment.
 type Tilleggsstilling struct {
-	StillingID      int64  `json:"stillingId,omitempty"`
-	Startdato       string `json:"startdato,omitempty"`
-	Sluttdato       string `json:"sluttdato,omitempty"`
-	Dellonnsprosent string `json:"dellonnsprosent,omitempty"`
-	EkstraStilling  string `json:"ekstraStilling,omitempty"`
+	StillingID      int64  `json:"stillingId"`
+	Startdato       string `json:"startdato"`
+	Sluttdato       string `json:"sluttdato"`
+	Dellonnsprosent string `json:"dellonnsprosent"`
+	EkstraStilling  string `json:"ekstraStilling"`
 }
 
 func (t *Tilleggsstilling) String() string {
 	return toString(t)
 }
 
-func toString(v interface{}) string {
+func toString(v any) string {
 	b := &bytes.Buffer{}
 	_ = json.NewEncoder(b).Encode(v)
 	return b.String()

@@ -1,23 +1,23 @@
 package models
 
 /*
- * Copyright (c) 2023-2025 Norwegian University of Science and Technology
+ * Copyright (c) 2023-2026 Norwegian University of Science and Technology
  */
 
 // Orgenhet is an organizational unit from DFØ/SAP REST-API.
 type Orgenhet struct {
-	ID                 int64     `json:"id,omitempty"`
-	OrgKortnavn        string    `json:"orgKortnavn,omitempty"`
-	Organisasjonsnavn  string    `json:"organisasjonsnavn,omitempty"`
-	Leder              []*Leder  `json:"leder,omitempty"`
-	PDO                string    `json:"pdo,omitempty"`
-	Type               string    `json:"type,omitempty"`
-	OrgKostnadssted    string    `json:"orgKostnadssted,omitempty"`
-	AuthWF             []*AuthWF `json:"authWf,omitempty"`
-	LokasjonID         string    `json:"lokasjonId,omitempty"`
-	DBHKode            string    `json:"dbhKode,omitempty"`
-	DBHBetegnelse      string    `json:"dbhBetegnelse,omitempty"`
-	OverordnOrgenhetID string    `json:"overordnOrgenhetId,omitempty"`
+	ID                 int64     `json:"id"`
+	OrgKortnavn        string    `json:"orgKortnavn"`
+	Organisasjonsnavn  string    `json:"organisasjonsnavn"`
+	Leder              []*Leder  `json:"leder"`
+	PDO                string    `json:"pdo"`
+	Type               string    `json:"type"`
+	OrgKostnadssted    string    `json:"orgKostnadssted"`
+	AuthWF             []*AuthWF `json:"authWf"`
+	LokasjonID         string    `json:"lokasjonId"`
+	DBHKode            string    `json:"dbhKode"`
+	DBHBetegnelse      string    `json:"dbhBetegnelse"`
+	OverordnOrgenhetID string    `json:"overordnOrgenhetId"`
 }
 
 func (oe *Orgenhet) String() string {
@@ -26,8 +26,8 @@ func (oe *Orgenhet) String() string {
 
 // Leder is the organizational leader for a given organizational unit.
 type Leder struct {
-	LederAnsattnr    string `json:"lederAnsattnr,omitempty"`
-	LederBrukerident string `json:"lederBrukerident,omitempty"`
+	LederAnsattnr    string `json:"lederAnsattnr"`
+	LederBrukerident string `json:"lederBrukerident"`
 }
 
 func (l *Leder) String() string {
@@ -36,10 +36,10 @@ func (l *Leder) String() string {
 
 // AuthWF is ...  I have no idea.
 type AuthWF struct {
-	Type          string `json:"type,omitempty"`
-	Bruker        string `json:"bruker,omitempty"`
-	KnytningStart string `json:"knytningStart,omitempty"`
-	KnytningSlutt string `json:"knytningSlutt,omitempty"`
+	Type          string `json:"type"`
+	Bruker        string `json:"bruker"`
+	KnytningStart string `json:"knytningStart"`
+	KnytningSlutt string `json:"knytningSlutt"`
 }
 
 func (a *AuthWF) String() string {
