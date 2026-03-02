@@ -50,7 +50,7 @@ type Ansatt struct {
 	HjemmelTekst           string              `json:"hjemmelTekst"`
 	Dellonnsprosent        string              `json:"dellonnsprosent"`
 	Kostnadssted           string              `json:"kostnadssted"`
-	OrganisasjonID         string              `json:"organisasjonId"`
+	OrganisasjonID         any                 `json:"organisasjonId"`
 	JurBedriftsnummer      int64               `json:"jurBedriftsnummer"`
 	PDO                    string              `json:"pdo"`
 	Tilleggsstilling       []*Tilleggsstilling `json:"tilleggsstilling"`
